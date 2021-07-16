@@ -7,7 +7,8 @@
           filled
           hide-details
           :items="food_items"
-          label="Foods" rounded
+          label="Foods"
+          rounded
           prepend-inner-icon="mdi-food-fork-drink"
         >
         </v-select>
@@ -17,7 +18,8 @@
           v-model="search"
           label="Search by name"
           filled
-          rounded hide-details
+          rounded
+          hide-details
           prepend-inner-icon="mdi-magnify"
         ></v-text-field>
       </v-col>
@@ -31,10 +33,26 @@
         v-for="beer in filter_beers"
         :key="beer.name"
       >
-        <v-responsive :aspect-ratio="1" class="beer-item pointer" @click="$router.push('/beer/'+beer.id)">
+        <v-responsive
+          :aspect-ratio="1"
+          class="beer-item pointer"
+          @click="$router.push('/beer/' + beer.id)"
+        >
           <v-img :src="beer.image_url" :aspect-ratio="1" contain />
-          <div class="beer-info w-100 fill-height d-flex justify-center align-center pa-3">
-            <div class="custom-font white--text text-center">{{beer.name}}</div>
+          <div
+            class="
+              beer-info
+              w-100
+              fill-height
+              d-flex
+              justify-center
+              align-center
+              pa-3
+            "
+          >
+            <div class="custom-font white--text text-center">
+              {{ beer.name }}
+            </div>
           </div>
         </v-responsive>
       </v-col>
@@ -42,7 +60,6 @@
   </v-container>
 </template>
 <script>
-//import Glass from '../components/Glass';
 export default {
   name: "Beers",
 
@@ -67,20 +84,24 @@ export default {
       }
     },
     select_beers() {
-
       if (this.selected_food === "All food") {
         this.filter_beers = this.beers.filter((f) => {
-          return this.search === '' || f.name.substr(0, this.search.length).toUpperCase() === this.search.toUpperCase();
+          return (
+            this.search === "" ||
+            f.name.substr(0, this.search.length).toUpperCase() ===
+              this.search.toUpperCase()
+          );
         });
       } else {
-        this.filter_beers = this.beers.filter((f) =>{
-           return f.food_pairing.includes(this.selected_food) && 
-           (this.search === '' || f.name.substr(0, this.search.length).toUpperCase() === this.search.toUpperCase())
-        }
-         
-        );
+        this.filter_beers = this.beers.filter((f) => {
+          return (
+            f.food_pairing.includes(this.selected_food) &&
+            (this.search === "" ||
+              f.name.substr(0, this.search.length).toUpperCase() ===
+                this.search.toUpperCase())
+          );
+        });
       }
-     
     },
   },
   watch: {
@@ -95,8 +116,7 @@ export default {
       this.select_beers();
     },
     search() {
-        this.select_beers();
-      
+      this.select_beers();
     },
   },
   mounted() {
@@ -115,7 +135,7 @@ export default {
 .beer-item {
   padding: 9% !important;
   overflow: hidden;
-      border-radius: 50%;
+  border-radius: 50%;
   &:before {
     content: "";
     width: 100%;
@@ -126,23 +146,22 @@ export default {
     left: 0;
     top: 0;
   }
-.beer-info{
-  position: absolute;
-  background: black;
-  border-radius: 50%;
-  bottom:-100%;
-  left:0;
-  transition: 0.3s all linear;
+  .beer-info {
+    position: absolute;
+    background: black;
+    border-radius: 50%;
+    bottom: -100%;
+    left: 0;
+    transition: 0.3s all linear;
+  }
+  &:hover {
+    .beer-info {
+      bottom: 0;
+    }
+  }
 }
-&:hover{
- .beer-info{
-  bottom:0;
-  
-} 
-}
-}
-.filter-row{
+.filter-row {
   background: #040404;
-    border-radius: 10px;
+  border-radius: 10px;
 }
 </style>
