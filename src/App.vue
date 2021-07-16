@@ -1,28 +1,57 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    
+<navigation />
+    <v-main class="mt-9">
+      <router-view/>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+ import Navigation from '@/partials/Navigation'
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  data: () => ({
+    //
+  }),
+  created(){
+   
+  },
+  components:{
+    Navigation
+  }
+};
+</script>
+<style lang="scss">
+.theme--light.v-text-field--filled > .v-input__control > .v-input__slot {
+    background: rgb(249 233 148) !important;
+}
+.w-100{
+  width: 100%;
+}
+.pointer{
+  cursor:pointer
+}
+#app{
+ &:before{
+   background-image: url('~@/assets/background.png');
+   background-repeat: no-repeat;
+   background-size: cover;
+   content:'';
+   position: fixed;
+   width: 100%;
+   height: 100%;
+ }
+}
+.custom-font{
+  font-family: 'Otomanopee One', sans-serif;
+}
+.relative{
+  position: relative;
+}
+.pointer{
+  cursor:pointer
 }
 </style>
