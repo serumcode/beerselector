@@ -5,7 +5,8 @@ import vuetify from './plugins/vuetify'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 Vue.config.productionTip = false
-axios.defaults.baseURL = "https://api.punkapi.com/v2";
+axios.defaults.baseURL = process.env.VUE_APP_API_BASE_URL;
+
 Vue.use(VueAxios, axios)
 
 new Vue({
