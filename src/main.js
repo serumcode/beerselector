@@ -6,7 +6,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 Vue.config.productionTip = false
 axios.defaults.baseURL = process.env.VUE_APP_API_BASE_URL;
-
+console.log(process.env)
 Vue.use(VueAxios, axios)
 
 new Vue({
